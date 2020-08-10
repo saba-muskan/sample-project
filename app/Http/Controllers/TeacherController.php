@@ -51,14 +51,13 @@ public function createResult(Request $request){
         'student_id',
         'marks',
         'obtain_marks',
-        'status_report',
         'promoted',
       
         
     ]);
 
     // dd( $result);
-    Result::create($result);
+    Result::create($result+['class_id'=>$user->student_class_of_admission]);
     // dd( $data);
        toastr()->success('Record Added Succesfully');
        return redirect()->back();

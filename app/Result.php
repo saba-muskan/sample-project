@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
 {
-    protected $primaryKey = ['id'];
-    protected $table ="results";
+    // protected $primaryKey = ['id'];
+    protected $table ="result";
       protected $fillable = [
         'subject_id',
         'year',
@@ -15,7 +15,6 @@ class Result extends Model
         'exam',
         'marks',
         'obtain_marks',
-        'status_report',
          'promoted',
          'class_id',
       

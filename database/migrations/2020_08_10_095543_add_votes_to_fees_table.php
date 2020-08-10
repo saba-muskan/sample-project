@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnToFeesTable extends Migration
+class AddVotesToFeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AddColumnToFeesTable extends Migration
     public function up()
     {
         Schema::table('fees', function (Blueprint $table) {
-            $table->bigInteger('late_charges');
+            $table->date('fee_generation_date');
+            $table->date('due_date');
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResultsTable extends Migration
+class CreateResultTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateResultsTable extends Migration
      */
     public function up()
     {
-        Schema::create('results', function (Blueprint $table) {
+        Schema::create('result', function (Blueprint $table) {
             $table->engine = 'MyISAM';
             $table->bigInteger('id');
             $table->bigInteger('subject_id');
@@ -23,10 +23,16 @@ class CreateResultsTable extends Migration
             $table->primary(['id','subject_id', 'year','exam','student_id']);
             $table->integer('marks')->nullable();
             $table->integer('obtain_marks')->nullable();
-            $table->integer('status_report')->nullable();
+            $table->bigInteger('class_id')->unsigned();
+            $table->foreign('class_id')->references('class_id')->on('classes')->onDelete('cascade');
+            $table->string('Promoted');
             $table->timestamps();
+
+
+
+
         });
-        DB::statement('ALTER TABLE results MODIFY id INTEGER NOT NULL AUTO_INCREMENT');
+        DB::statement('ALTER TABLE result MODIFY id INTEGER NOT NULL AUTO_INCREMENT');
     }
 
     /**
@@ -36,6 +42,6 @@ class CreateResultsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results');
+        Schema::dropIfExists('result');
     }
 }

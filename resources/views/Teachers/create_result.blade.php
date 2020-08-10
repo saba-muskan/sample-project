@@ -51,12 +51,7 @@
                     </div>
                 </div>
                     
-                <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label">Status Report</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="status_report" required>
-                    </div>
-                </div>
+               
                
                 @php
                 $cl = App\Subject::all();
