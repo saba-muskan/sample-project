@@ -1,0 +1,78 @@
+CREATE OR REPLACE Procedure insert_employee_info_admin (
+v_name in employee.name%type, 
+v_fname in employee.father_name%type,
+v_cnic in employee.cnic%type, 
+v_address in employee.address%type,
+v_dob in employee.dob%type, 
+v_marital in employee.marital_status%type,
+v_gender in employee.gender%type, 
+v_age in employee.age%type,
+v_contact in employee.contact_no%type, 
+v_telephone in employee.telephone_no %type,
+v_bloodgroup in employee.blood_group%type, 
+v_caste in employee.caste%type,
+
+v_reference in employee.reference%type, 
+v_emcontact in employee.emergency_contact%type,
+v_place_of_issue in employee.place_of_issue%type, 
+v_postcode in employee.postcode%type,
+v_city in employee.city%type, 
+v_country in employee.country%type,
+v_district in employee.district%type, 
+v_image_path in employee.image_path%type,
+v_permadd in employee.permenant_address%type, 
+v_place_of_birth in employee.place_of_birth%type,
+v_pedu in education.primary_education%type, 
+v_sedu in education.secondary_education%type,
+v_uedu in education.university_education%type, 
+v_exp in experience.experience%type,
+v_others in other_activities.activities%type, 
+v_gname1 in GUARANTOR_INFORMATION.name%type,
+v_gfname1 in GUARANTOR_INFORMATION.fathername%type,
+v_gcontact1 in GUARANTOR_INFORMATION.contact_no%type,
+v_gcnic1 in GUARANTOR_INFORMATION.cnic%type,
+v_gname2 in GUARANTOR_INFORMATION.name%type,
+v_gfname2 in GUARANTOR_INFORMATION.fathername%type,
+v_gcontact2 in GUARANTOR_INFORMATION.contact_no%type,
+v_gcnic2 in GUARANTOR_INFORMATION.cnic%type,
+v_sd in date,
+v_recieveby in office_info.recieve_by%type, 
+v_interviewdate in date,
+v_interviewtime in office_info.INTERVIEW_TIME%type, 
+v_interviewed_by in office_info.interviewed_by%type,
+v_doj in DATE,
+v_status in office_info.status%type,
+v_shift in employee.shift%type,
+v_depart in department.dept_no%type,
+v_emptype in employee.emp_type%type,
+v_alivestatus in employee.alivestatus%type,
+v_job in job.job_title%type,
+userid in varchar2,
+password in varchar2,
+v_religion in employee.religion%type,
+v_email in varchar2
+) is
+
+v_empno number;
+jobid number;
+
+begin
+
+select job_id into jobid from job where job_title = v_job;
+
+insert into employee values(emp_no.nextval, v_name, v_fname, v_cnic, v_address, v_dob, v_marital, v_gender, v_age, v_contact, v_telephone, v_bloodgroup, 
+v_caste, jobid, v_reference, v_emcontact, v_place_of_issue, v_postcode, v_city, v_country, v_district, v_place_of_birth, v_permadd, v_image_path, 
+v_shift, v_alivestatus, v_depart, v_emptype, v_religion, v_email);
+
+select max(emp_no) into v_empno from employee;
+
+insert into education values (v_empno, v_pedu, v_sedu, v_uedu);
+insert into experience values (v_empno, v_exp);
+insert into other_activities values(v_empno, v_others);
+insert into GUARANTOR_INFORMATION values (v_empno, g_no.nextval,  v_gname1, v_gfname1,v_gcontact1,v_gcnic1);
+insert into office_info values (v_empno, v_sd, v_recieveby, v_interviewdate, v_interviewtime , v_interviewed_by, jobid, v_doj, v_status);
+insert into GUARANTOR_INFORMATION values (v_empno, g_no.nextval,  v_gname2,v_gfname2,v_gcontact2,v_gcnic2);
+insert into job_history (emp_no, start_date, job_id, shift, status) values (v_empno, v_doj, jobid, v_shift,'ACTIVE');
+insert into users (name, password, emp_id) values (userid, password, v_empno);
+
+end;

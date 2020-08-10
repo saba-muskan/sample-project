@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exophpruntimes>
+<php version="5.4">
+<folder>PHPRuntime54</folder>
+<dllname>php5.dll</dllname>
+<xdebug>1</xdebug>
+<nghttp2>0</nghttp2>
+<vcrun>Microsoft Visual C++ Redistributable for Visual Studio 2008 SP1 x86</vcrun>
+<vcrunurl>http://www.microsoft.com/en-us/download/details.aspx?id=5582</vcrunurl>
+</php>
+<php version="5.5">
+<folder>PHPRuntime55</folder>
+<dllname>php5.dll</dllname>
+<xdebug>1</xdebug>
+<nghttp2>0</nghttp2>
+<vcrun>Microsoft Visual C++ Redistributable for Visual Studio 2012 x86</vcrun>
+<vcrunurl>http://www.microsoft.com/en-us/download/details.aspx?id=30679</vcrunurl>
+</php>
+<php version="5.6">
+<folder>PHPRuntime56</folder>
+<dllname>php5.dll</dllname>
+<nghttp2>0</nghttp2>
+<xdebug>1</xdebug>
+<vcrun>Microsoft Visual C++ Redistributable for Visual Studio 2012 x86</vcrun>
+<vcrunurl>http://www.microsoft.com/en-us/download/details.aspx?id=30679</vcrunurl>
+<vcrunver>11</vcrunver>
+<localvcrun>vcruntime11</localvcrun>
+</php>
+<php version="7.1">
+<folder>PHPRuntime7</folder>
+<dllname>php7.dll</dllname>
+<internalextension>php_exo7int.dll</internalextension>
+<xdebug>1</xdebug>
+<nghttp2>1</nghttp2>
+<localvcrun>vcruntime14</localvcrun>
+<vcrun>Microsoft Visual C++ Redistributable for Visual Studio 2015 x86</vcrun>
+<vcrunurl>http://www.microsoft.com/en-us/download/details.aspx?id=48145</vcrunurl>
+<vcrunver>14</vcrunver>
+</php>
+<php version="7.2">
+<folder>PHPRuntime72</folder>
+<dllname>php7.dll</dllname>
+<internalextension>php_exo7int.dll</internalextension>
+<xdebug>0</xdebug>
+<nghttp2>1</nghttp2>
+<localvcrun>vcruntime14</localvcrun>
+<vcrun>Microsoft Visual C++ Redistributable for Visual Studio 2017 x86</vcrun>
+<vcrunurl>https://go.microsoft.com/fwlink/?LinkId=746571</vcrunurl>
+<vcrunver>14</vcrunver>
+</php>
+<php version="7.3">
+<folder>PHPRuntime73</folder>
+<dllname>php7.dll</dllname>
+<internalextension>php_exo7int.dll</internalextension>
+<xdebug>0</xdebug>
+<nghttp2>1</nghttp2>
+<localvcrun>vcruntime14</localvcrun>
+<vcrun>Microsoft Visual C++ Redistributable for Visual Studio 2017 x86</vcrun>
+<vcrunurl>https://go.microsoft.com/fwlink/?LinkId=746571</vcrunurl>
+<vcrunver>14</vcrunver>
+</php>
+<php version="7.4">
+<folder>PHPRuntime74</folder>
+<dllname>php7.dll</dllname>
+<internalextension>php_exo7int.dll</internalextension>
+<xdebug>0</xdebug>
+<nghttp2>1</nghttp2>
+<localvcrun>vcruntime14</localvcrun>
+<vcrun>Microsoft Visual C++ Redistributable for Visual Studio 2017 x86</vcrun>
+<vcrunurl>https://go.microsoft.com/fwlink/?LinkId=746571</vcrunurl>
+<vcrunver>14</vcrunver>
+</php>
+</exophpruntimes>
