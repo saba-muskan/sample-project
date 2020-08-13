@@ -39,9 +39,10 @@
                       <td>
                         @php
                         $today = \Illuminate\Support\Carbon::now()->format('Y-m-d');
+                        // dd($today);
                         @endphp
                       
-                        @if($d->date == $today )
+                        @if($d->date==$today)
                         <div class="container-2">
                           <div class="btn btn-two">
                             <form method="POST" action="/attendance/edit" >
@@ -51,17 +52,21 @@
                                 @php
                                 $data=DB::table('roles')
                                 ->where('id',Auth::user()->role_id)->first();
-                               //  dd($data);
+                                // dd($data);
                            @endphp
+                            
                            @if($data->name=='Teacher')
-                                <button class="btn btn-primary btn-xs"><i class=" fa fa-pencil"></i></button>
-                                {{-- <button class="btn btn-outline-success" type="submit"><i class="fas fa-edit"></i></button> --}}
-                                @php
+                           
+                            
+                            
+                            @php
                                 $cl = App\Classes::all();
                                 @endphp
                                 <div class="form-group">
-                                  <label class="col-sm-2 col-sm-2 control-label">Class</label>
+                                  <button class="btn btn-primary btn-xs d-inline"><i class=" fa fa-pencil"></i></button>
+                                  
                                   <div class="col-sm-10">
+                                    <label class="col-sm-2 col-sm-2 control-label">Class</label>
                                     <select ct name="class_id" class="form-control">
                                         <option></option>
                                         @foreach ($cl as $c)
@@ -69,19 +74,22 @@
                                         
                                         @endforeach
                                     </select>
+                                   
                                     
                                   </div>
                                 </div>
-                              
-                             
-                             
                                 @endif
+                           
+                           
+                                {{-- <button class="btn btn-outline-success" type="submit"><i class="fas fa-edit"></i></button> --}}
+                                
                               </span>
                             
                             </form>
                           </div>
                         </div>
                         @endif
+                      
                         <div class="container-2">
                           <div class="btn btn-two">
                             <form method="POST" action="/attendance/view_individual">
@@ -96,9 +104,7 @@
                                      ->where('id',Auth::user()->role_id)->first();
                                     //  dd($data);
                                 @endphp
-                              
-
-                                  
+                                 
                                 @if($data->name=='Student')
                                 <button class="btn btn-success btn-xs"><i class=" fa fa-eye"></i></button>
                                 {{-- <button class="btn btn-outline-success" type="submit"><i class="fas fa-eye"></i></button> --}}
@@ -169,42 +175,4 @@
 </body>
 
 </html>
-{{-- <script type="text/javascript">
-  $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-    }
-  }); 
-  $(document).on('click','.viewBtn',function(){
-    var id = $(this).attr('id');
-      $.ajax({
-      url: 'assign/subjectteacher/'+ id ,
-      method:'GET',
-      dataType:'json',
-      success:function(data)
-      {
-          // console.log(data);
-        
-      //   $('#user_id').val(data[0].id); 
-        $('#subject_teacher_id').val(data[0].id);  
-        $('#subject_name').val(data[0].section);  
-        $('#class_name').val(data[0].class_name);  
-        $('#class_name').val(data[0].class_name);  
-        // var a = $("#dept_id").val();
-        // var dept_id = data[0].dept_id;
-        // console.log(a,dept_id);
-        // if(a == dept_id){
-        //     $("#dept_id").selectedInde();
-        // }
-        // $('#dept_id').append("<option selected>"+data[0].name+"</option>"); 
-        // $('#password').val(data[0].password); 
-        
-        
-      },
-      error: function(e) {
-        console.log(e);
-      }
-    });
-  });
 
-</script> --}}

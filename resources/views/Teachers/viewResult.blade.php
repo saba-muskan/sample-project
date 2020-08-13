@@ -88,7 +88,7 @@
                        <td>{{$results->marks}}</td>
                        <td>{{$results->obtain_marks}}</td>
                        
-                       <td>{{$results->promoted}}</td>
+                       <td>{{$results->Promoted}}</td>
                        <td>
                         {{-- <button type="button" class="btn btn-success btn-xs viewBtn" data-toggle="modal" data-target="#myModal" id="{{$results->student_id}}"><i class=" fa fa-eye"></i></button> --}}
                           <a href="result/{{$results->id}}/edit"><button class="btn btn-primary btn-xs"><i class=" fa fa-pencil"></i></button></a>

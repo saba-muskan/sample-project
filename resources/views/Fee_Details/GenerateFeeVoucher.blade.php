@@ -119,11 +119,11 @@
 				<div class="receipt-header receipt-header-mid">
 					<div class="col-xs-8 col-sm-8 col-md-8 text-left">
 						<div class="receipt-right">
-                        <p><b>Student Id :</b>{{$stu[0]->student_id}}</p>
-							<p><b>Student Name :</b>{{$stu[0]->student_name}}</p>
-							<p><b>Father Name:</b> {{$stu[0]->father_name}}</p>
-							<p><b>Month:</b>{{$fee_detail[0]->fee_month}}</p>
-							<p><b>Year:</b>{{$fee[0]->year}}</p>
+                        <p><b>Student Id :</b>{{$stu->student_id}}</p>
+							<p><b>Student Name :</b>{{$stu->student_name}}</p>
+							<p><b>Father Name:</b> {{$stu->father_name}}</p>
+							{{-- <p><b>Month:</b>{{$fee_detail->fee_month}}</p> --}}
+							{{-- <p><b>Year:</b>{{$fee->year}}</p> --}}
 							</p>
 						</div>
 					</div>
@@ -147,46 +147,49 @@
                     <tbody>
                         <tr>
                             <td class="col-md-9">Annual Charges</td>
-                            <td class="col-md-3"><i class="fa fa-inr"></i>{{$fee[0]->annual_charges}}</td>
+                            <td class="col-md-3"><i class="fa fa-inr"></i>{{$fee->annual_charges}}</td>
                         </tr>
                         <tr>
                             <td class="col-md-9">Tution Fee</td>
-                            <td class="col-md-3"><i class="fa fa-inr"></i>{{$fee[0]->tution_fee}}</td>
+                            <td class="col-md-3"><i class="fa fa-inr"></i>{{$fee->tution_fee}}</td>
 						</tr>
 						<tr>
                             <td class="col-md-9">Lab Charges</td>
-                            <td class="col-md-3"><i class="fa fa-inr"></i> {{$fee[0]->lab}}</td>
+                            <td class="col-md-3"><i class="fa fa-inr"></i> {{$fee->lab}}</td>
 						</tr>
-                        <tr>
+						<tr>
                             <td class="col-md-9">Late Charges</td>
-                            <td class="col-md-3"><i class="fa fa-inr"></i> {{$fee[0]->late_charges}}</td>
+                            <td class="col-md-3"><i class="fa fa-inr"></i> {{$fee->late_charges}}</td>
 						</tr>
-						
-                       
+						<tr>
+                            <td class="col-md-9">Arrears</td>
+                            <td class="col-md-3"><i class="fa fa-inr"></i> {{$fee_detail->arrears}}</td>
+						</tr>
                         <tr>
                            
                             <td class="text-right"><h2><strong>Total: </strong></h2></td>
-                            <td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i> {{$fee[0]->amount}}</strong></h2></td>
+                            <td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i> {{$fee_detail->current_ammount}}</strong></h2></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-			
 			<div class="row">
 				<div class="receipt-header receipt-header-mid receipt-footer">
 					<div class="col-xs-8 col-sm-8 col-md-8 text-left">
 						<div class="receipt-right">
-							<p><b>Due Date:</b>{{$fee_detail[0]->due_date}}</p>
+							<p><b>Due Date:</b>{{$fee->due_date}}</p>
+							<p><b>Payment Date:</b>{{$fee_detail->due_date}}</p>
 					
 						</div>
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-4">
 						<div class="receipt-left">
-							<h1>Signature</h1>
+						
 						</div>
 					</div>
 				</div>
             </div>
+
 			
         </div>    
 	</div>

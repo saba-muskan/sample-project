@@ -47,32 +47,76 @@ class Fee_DetailsController extends Controller
             'due_date',
             'fee_month',
             'fees_id',
-            'arrears',
             'fee_status',
         ]);
 
+    //    $current=DB::table('fees')
+    //    ->select('amount') 
+    //    ->where('fee_id',$request->fess_id)->first();
        $current=DB::table('fees')
-       ->select('amount') 
-       ->where('fee_id',$request->fess_id)->first();
-    //    dd($current);
-    $fees_id=DB::table('fee_details')
-    ->select('fees_id')
-    ->where('fees_id',$request->fees_id)->where('fee_month',$request->fee_month)->first();
-    // dd($fees_id);
-
-
+       ->select('amount','due_date') 
+       ->where('fee_id',$request->fees_id)->first();
+        // dd($current);
+        $start_time = \Carbon\Carbon::parse($request->input('due_date'));
+        $finish_time = \Carbon\Carbon::parse($current->due_date);
+        $diff =  $start_time->diffInDays($finish_time );
+        if($diff<0){
+            $current=DB::table('fees')
+            ->select('amount') 
+            ->where('fee_id',$request->fees_id)->first();
+            
       if( $fees_id==''){
-        FeeDetail::create($data+['current_ammount'=> $current]);
+        $fees_id=DB::table('fee_details')
+        ->select('fees_id')
+        ->where('fees_id',$request->fees_id)->where('fee_month',$request->fee_month)->first();
+        $arrears=0*100;
+        $current=$arrears+$current->amount;
+        FeeDetail::create($data+['current_ammount'=> $current,'arrears'=>$arrears]);
 
        
         return View('Fee_Details.setfee_details');
 
-    }
+             }
     else{
         toastr()->error('Already Set');
         return redirect()->back();
 
-    }
+        }
+       
+        }
+        else{
+            $fees_id=DB::table('fee_details')
+            ->select('fees_id')
+            ->where('fees_id',$request->fees_id)->where('fee_month',$request->fee_month)->first();
+            $arrears=$diff*100;
+
+            $current=$arrears+$current->amount;
+            // dd($current);
+            if( $fees_id==' '){
+                FeeDetail::create($data+['current_ammount'=> $current,'arrears'=>$arrears]);
+        
+               
+                return View('Fee_Details.setfee_details');
+        
+            }
+            else{
+                toastr()->error('Already Set');
+                return redirect()->back();
+        
+            }
+        }
+
+            
+     
+       
+        
+
+    //    dd($current);
+          
+    // dd($fees_id);
+
+
+     
        
 
     }
@@ -193,10 +237,10 @@ class Fee_DetailsController extends Controller
           
             public function updateFee(Request $request,$id,$date)
             {
-                 dd($request->all());
+                //  dd($request->all());
                 $student = DB::table('fee_details')
                 ->where('student_id', $id)->where('due_date',$date)->first();
-                dd($student);
+                // dd($student);
                 if($student != null){
                  //    dd($request);
                      $student->status=$request->due_date;
@@ -214,12 +258,14 @@ class Fee_DetailsController extends Controller
            
 
                 $fee_detail=DB::table('fee_Details')
-                  ->where('student_id',$id)->get();
+                  ->where('fees_id',$feeid)->first();
+                //   dd($fee_detail);
                   $stu=DB::table('students')
-                ->where('student_id',$id)->get();
-            
+                  ->join('parents','parents.parent_id','students.parent_id')
+                 ->where('student_id',$id)->first();
+            // dd($stu);
                    $fee=DB::table('fees')
-                ->where('fee_id',$feeid)->get();
+                ->where('fee_id',$feeid)->first();
                     //  dd($fee);
 
 

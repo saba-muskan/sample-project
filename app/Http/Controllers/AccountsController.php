@@ -153,7 +153,9 @@ public function paymenthistory(){
                 'branch_id',
                 'late_charges',
                 'fee_type',
-                'month'
+                'month',
+                'feeGenerationDate',
+                'due_date',
             ]);
             
     
@@ -187,7 +189,10 @@ public function paymenthistory(){
                 'branch_id',
                 'late_charges',
                 'fee_type',
-                'month'
+                'month',
+                'feeGenerationDate',
+                'due_date',
+
             ]);
             
     
@@ -223,7 +228,9 @@ public function paymenthistory(){
                 'branch_id',
                 'late_charges',
                 'fee_type',
-                'month'
+                'month',
+                'feeGenerationDate',
+                'due_date',
             ]);
             
     

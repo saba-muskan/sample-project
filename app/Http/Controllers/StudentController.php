@@ -275,9 +275,12 @@ class StudentController extends Controller
         // dd($data);
         if($data->name=='Admin')
         {
-            // $home = DB::table('students')
+            $home = DB::table('homeworks')
+            ->get();
+            return view('students.homework',compact('home'));
 
             }
+            else if($data->name=='Student')
         $home = DB::table('students')
         ->join('subjects','subjects.class_id', '=' , 'students.student_class_of_admission')
         ->join('homeworks','homeworks.subject_id' , '=' , 'subjects.subject_id')
@@ -331,8 +334,8 @@ class StudentController extends Controller
 
         $id = Auth::user()->id;
     //    dd($id);
-        $results = DB::table('results')
-        ->join('students','students.student_id' , '=' , 'results.student_id')
+        $results = DB::table('result')
+        ->join('students','students.student_id' , '=' , 'result.student_id')
         ->where('students.user_id',$id)
         // ->where('results.status_report',1)
         // ->where()

@@ -38,10 +38,9 @@
               // dd($data);
                                @endphp
             @php
-               $subject = DB::table('subject_teachers')
-              ->join('subjects','subjects.subject_id','subject_teachers.subject_id')
+               $subject = DB::table('subjects')
                   ->join('classes','classes.class_id','subjects.class_id')
-                 ->select('subject_teachers.*','subjects.*','classes.*')
+                 ->select('subjects.*','classes.*')
               ->get();
            
         $subjectteacher = DB::table('subject_teachers')

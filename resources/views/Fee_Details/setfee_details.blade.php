@@ -46,7 +46,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Due Date</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Payment  Date</label>
                   <div class="col-sm-10">
                     <input type="date" class="form-control" name="due_date" required>
                   </div>
@@ -54,7 +54,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Fee Month</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="fee_month" required>
+                    <input type="month" class="form-control" name="fee_month" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -71,18 +71,8 @@
                       </select>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Current Amount</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" name="current_ammount" required>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Arrears</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" name="arrears" required>
-                  </div>
-                </div>
+              
+                
                 
                 <div class="form-group">
 

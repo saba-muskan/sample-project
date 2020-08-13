@@ -29,7 +29,7 @@ class TeacherController extends Controller
         return View('Teachers.create_result');
     }
     public function viewresultindex(){
-        $users = DB::table('results')->get();
+        $users = DB::table('result')->get();
         return View('Teachers.viewResult',compact('users'));
     }
 public function createResult(Request $request){
@@ -194,6 +194,7 @@ public function createResult(Request $request){
                 $data = DB::table('student_attendances')
                 ->where('teacher_id' , $teacher_id)
                 ->distinct()->get(['date', 'class_id']);
+                // dd($data);
                 return view('Teachers.view_attendance', compact('data'));
             }
             elseif($teacher_id==5){
@@ -206,8 +207,6 @@ public function createResult(Request $request){
             }
             elseif($teacher_id==2)
             $data = DB::table('student_attendances')->get();
-            // ->distinct()->get(['date', 'class_id']);
-            // dd( $data);
             return view('Teachers.view_attendance', compact('data'));
 
             }
