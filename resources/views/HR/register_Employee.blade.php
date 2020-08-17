@@ -85,15 +85,15 @@
                 </div>
 
                 @php
-                   $cl = App\Job::all();
+                   $cl = App\Role::all();
                 @endphp
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Designation</label>
                   <div class="col-sm-10">
-                    <select name="job_id" id="job_id" class="form-control input-lg" >
+                    <select name="role_id" id="job_id" class="form-control input-lg" >
                       <option></option>
                       @foreach ($cl as $c)
-                      <option value="{{$c->job_id}}">{{$c->job_Name}}</option>
+                      <option value="{{$c->id}}">{{$c->name}}</option>
                       
                       @endforeach
                     </select>

@@ -28,7 +28,7 @@ class HRController extends Controller
      */
     protected function validator(array $data)
     {
-        dd($data);
+        // dd($data);
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -121,15 +121,11 @@ class HRController extends Controller
         // return redirect('/');                
     }
     public function store(Request $request){
-        // dd($request->all());
-      
-      
-      
-      
+        
         $validatedData = Validator::make($request->all(),[
             'employee_name'=>'bail|required|max:255|string',
             'employee_email'=>'required|unique:employees|email',
-            'employee_phone_number'=>'required|integer',
+            'employee_phone_number'=>'required',
             'employee_hireDate'=>'required',
             'employee_cnic'=>'required|integer',
             'employee_dob'=>'required',
@@ -138,22 +134,23 @@ class HRController extends Controller
             'employee_gender'=>'required',
             'employee_address'=>'required',
             'marital_status'=>'required',
-
-
-        ]);
-        // dd('abc');
-        if($validatedData->fails()){
-          
-            return redirect('/addemployee')->withErrors($validatedData)->withInput();
-        }
+            
+            
+            ]);
+            // dd('abc');
+            if($validatedData->fails()){
+                
+                return redirect('/addemployee')->withErrors($validatedData)->withInput();
+            }
+            // dd($request->all());
         User::create([
             'name' => $request['employee_name'],
             'email' => $request['employee_email'],
             'password' => Hash::make($request['password']),
-            'role_id' => $request['employee_designation'],
+            'role_id' => $request['role_id'],
         ]);
-         $register_user = User::select('*')->where('email' , $request['employee_email'])->where('role_id' ,  $request['employee_designation'])->first();
-         DB::insert('INSERT into role_user(role_id , user_id ) values(? , ?)' , [$request['employee_designation'], $register_user->id]);
+         $register_user = User::select('*')->where('email' , $request['employee_email'])->where('role_id' ,  $request['role_id'])->first();
+         DB::insert('INSERT into role_user(role_id , user_id ) values(? , ?)' , [$request['role_id'], $register_user->id]);
          
          
 
@@ -170,7 +167,7 @@ class HRController extends Controller
         $employee->employee_dob = $request->input('employee_dob');
         $employee->branch_id = $request->input('branch_id');
         $employee->Qualification = $request->input('Qualification');
-        $employee->job_id = $request->input('job_id');
+        $employee->job_id = $request->input('role_id');
         // $employee->Image=$request->input('Image');
         
        if($request->hasfile('Image')){
