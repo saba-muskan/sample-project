@@ -19,7 +19,7 @@ class HRController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -51,11 +51,14 @@ class HRController extends Controller
 
     public function index()
     {
+        // dd('ok');
         return view('HR.register_Employee');
     }
 
     public function employeeindex()
     {
+
+        // dd('ok');
         return view('HR.register_employee');
     }
 
@@ -603,13 +606,13 @@ class HRController extends Controller
     //   $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
     //  }
     //  echo $output;
-
+// dd($id);
     if(request()->ajax())
     {
         $data=DB::table('jobs')
         ->where('dept_id',$id)
         ->get();
-        // dd($data);
+        dd($data);
      return $data;
     }
     }

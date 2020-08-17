@@ -42,7 +42,7 @@ class RolesController extends Controller
         $data=$request->all([
            
             'name',
-            'dept_id',
+           
             
         ]);
         Role::create($data);

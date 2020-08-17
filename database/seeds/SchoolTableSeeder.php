@@ -11,6 +11,30 @@ class SchoolTableSeeder extends Seeder
      */
     public function run()
     {
+      DB::table('departments')->insert([
+        'dept_name' => ('Faculty'),
+    ]);
+
+    DB::table('departments')->insert([
+        'dept_name' => ('Admin'),
+    ]);
+
+    DB::table('departments')->insert([
+        'dept_name' => ('HR'),
+    ]);
+
+    DB::table('departments')->insert([
+        'dept_name' => ('Accounts'),
+    ]);
+
+    DB::table('departments')->insert([
+        'dept_name' => ('Examination'),
+    ]);
+
+    DB::table('departments')->insert([
+        'dept_name' => ('Admission'),
+    ]);
+
  ////////////////////////////////////Teacher///////////////////////////////           
 //========>Create Salybus
 DB::table('sidebar')->insert([

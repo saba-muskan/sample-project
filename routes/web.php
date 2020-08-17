@@ -260,5 +260,5 @@ Route::any('student/{id}/report', 'ExaminationController@makereport');
 Route::any('generatereport/bulk', 'ExaminationController@updateresult');
 //////////////////////////////Assign Role/////////////////////
 Route::resource('/assignrole', 'UserSideBarController');
-Route::resource('/roleassign', 'UserSideBarController');
+// Route::resource('/roleassign', 'UserSideBarController');
 
