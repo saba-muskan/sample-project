@@ -56,7 +56,19 @@
                    
                  </div>
                </div>
+               <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Login Rights</label>
+                <div class="col-sm-10">
+                  <select name="login_rights" class="form-control" required>
+                      <option>Yes</option>
+                      <option>No</option>
+                      
+                    
+                  </select>
                   
+                </div>
+              </div>
+                 
               
 
                 <button type="submit" class="btn btn-theme">Submit</button>

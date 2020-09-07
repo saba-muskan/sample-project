@@ -252,12 +252,12 @@ class ParentsController extends Controller
             
                $res=DB::table('subject_teachers')
              ->where('subject_id',$id)->first();
-           
+         
               
                $lect_name=DB::table('lectures')
                ->select('lecture','lecture_name')
                ->where('subject_id',$res->subject_id)->where('user_id',$res->teacher_id)->get();
-               
+               dd($res);
             return view('Parents.view_sublectures',compact('lect_name'));
 
      }

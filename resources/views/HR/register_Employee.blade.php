@@ -85,15 +85,15 @@
                 </div>
 
                 @php
-                   $cl = App\Role::all();
+                   $cl = App\Job::all();
                 @endphp
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Designation</label>
                   <div class="col-sm-10">
-                    <select name="role_id" id="job_id" class="form-control input-lg" >
+                    <select name="job_Name" id="job_Name" class="form-control input-lg" >
                       <option></option>
                       @foreach ($cl as $c)
-                      <option value="{{$c->id}}">{{$c->name}}</option>
+                      <option value="{{$c->job_Name}}">{{$c->job_Name}}</option>
                       
                       @endforeach
                     </select>
@@ -119,8 +119,7 @@
                 
                 @php
                 $cl = App\Branch::all();
-            
-             @endphp
+                @endphp
              <div class="form-group">
                <label class="col-sm-2 col-sm-2 control-label">Branch</label>
                <div class="col-sm-10">
@@ -222,17 +221,7 @@
                     @enderror
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label">Department</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="department" value="{{old('department')}}" >
-                        @error('department')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    </div>
-                </div>
+           
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Password</label>
                   <div class="col-sm-10">

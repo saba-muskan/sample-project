@@ -36,7 +36,7 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        // dd( $request->all());
+      dd($request->all());
         $detail=DB::table('jobs')
         ->where('job_Name',$request->job_Name)->get();
         // dd($Detail);
@@ -45,6 +45,7 @@ class JobController extends Controller
           $data=$request->all([
             'job_Name',
             'dept_id',
+            'login_rights',
             
             
         ]);
@@ -112,6 +113,7 @@ class JobController extends Controller
     }
 
     /**
+     * 
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

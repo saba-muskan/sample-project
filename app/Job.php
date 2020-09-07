@@ -13,6 +13,7 @@ class Job extends Model
     protected $fillable = [
         'job_Name',
         'dept_id',
+        'login_rights',
        
     ];
 }

@@ -121,7 +121,8 @@ class HRController extends Controller
         // return redirect('/');                
     }
     public function store(Request $request){
-        
+       
+    //    dd($request->all()) ;
         $validatedData = Validator::make($request->all(),[
             'employee_name'=>'bail|required|max:255|string',
             'employee_email'=>'required|unique:employees|email',
@@ -157,7 +158,7 @@ class HRController extends Controller
         $employee = new Employee();
         $employee->employee_name = $request->input('employee_name');
         $employee->employee_email = $request->input('employee_email');
-        $employee->employee_designation = $request->input('employee_designation');
+        $employee->employee_designation = $request->input('job_name');
         $employee->marital_status = $request->input('marital_status');
         $employee->employee_address = $request->input('employee_address');
         $employee->employee_gender = $request->input('employee_gender');
@@ -167,7 +168,7 @@ class HRController extends Controller
         $employee->employee_dob = $request->input('employee_dob');
         $employee->branch_id = $request->input('branch_id');
         $employee->Qualification = $request->input('Qualification');
-        $employee->job_id = $request->input('role_id');
+        // $employee->job_id = $request->input('role_id');
         // $employee->Image=$request->input('Image');
         
        if($request->hasfile('Image')){
